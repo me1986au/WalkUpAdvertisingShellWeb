@@ -6,6 +6,7 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
 using WalkUpAdvertisingShellWeb.Models;
+using System.Configuration;
 
 namespace WalkUpAdvertisingShellWeb
 {
@@ -54,9 +55,11 @@ namespace WalkUpAdvertisingShellWeb
             //   consumerKey: "",
             //   consumerSecret: "");
 
+            var a = ConfigurationManager.AppSettings["appId"].ToString();
+
             app.UseFacebookAuthentication(
-               appId: "4838326044",
-               appSecret: "eb07f4f83fcc0a591124a9c9b40d018a");
+                   appId: ConfigurationManager.AppSettings["appId"].ToString(),
+               appSecret: ConfigurationManager.AppSettings["appSecret"].ToString());
 
 
             //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
